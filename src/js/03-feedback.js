@@ -4,14 +4,7 @@ const form = document.querySelector(".feedback-form");
 const email = form.elements.email;
 const message = form.elements.message;
 
-//1. getting data from local storage to inputs
-const storedData = JSON.parse(localStorage.getItem('feedback-form-state'));
-if (storedData) {
-  email.value = storedData.email;
-  message.value = storedData.message;
-};
-
-//2. saving values from inputs to local storage
+//1. saving values from inputs to local storage
 const saveData = () => {
   const formData = {
       email: `${email.value.trim()}`,
@@ -20,6 +13,13 @@ const saveData = () => {
   localStorage.setItem("feedback-form-state", JSON.stringify(formData));
 }
 form.addEventListener("input", throttle(saveData, 500));
+
+//2. getting data from local storage to inputs
+const storedData = JSON.parse(localStorage.getItem('feedback-form-state'));
+if (storedData) {
+  email.value = storedData.email;
+  message.value = storedData.message;
+};
 
 //3. form's validation
 const validateForm = (event) => {
