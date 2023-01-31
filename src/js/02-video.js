@@ -8,4 +8,7 @@ const saveCurrentTime = (event) => {
 };
 player.on('timeupdate', throttle(saveCurrentTime, 1000));
 
-player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+const currentTime = localStorage.getItem('feedback-form-state');
+if (currentTime) {
+  player.setCurrentTime(currentTime);
+};
