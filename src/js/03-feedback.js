@@ -7,8 +7,8 @@ const message = form.elements.message;
 //1. saving values from inputs to local storage
 const saveData = () => {
   const formData = {
-      email: `${email.value.trim()}`,
-      message: `${message.value.trim()}`
+      email: email.value.trim(),
+      message: message.value.trim()
     };
   localStorage.setItem("feedback-form-state", JSON.stringify(formData));
 }
